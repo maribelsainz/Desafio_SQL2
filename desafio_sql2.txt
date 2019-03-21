@@ -1,0 +1,37 @@
+1) Desea obtener la fecha de registro de su último miembro. ¿Cómo puedes recuperar
+esta información?
+
+SELECT joindate FROM members ORDER BY joindate DESC LIMIT 1;
+______________________________________________________________________________________
+2) Desea obtener el nombre y apellido del último miembro (s) que se inscribió, no solo
+la fecha. ¿Cómo puedes hacer eso?
+
+SELECT firstname, surname, joindate FROM members ORDER BY joindate DESC LIMIT 1;
+______________________________________________________________________________________
+3) Listar el nombre, apellido y fecha de inscripción de todos los miembros que se
+encuentren inscritos entre el 01 de agosto y el 30 de agosto del 2012, y ordenar el
+listado por fecha de inscripción de forma descendente.
+
+SELECT firstname, surname, joindate
+FROM members
+WHERE joindate BETWEEN '01/08/2012' AND '30/09/2012'
+ORDER BY joindate DESC;
+______________________________________________________________________________________
+4) Listar todos los nombres de los miembros y la cantidad de veces que se repiten, que
+sean igual o superior a 2 veces.
+
+SELECT firstname, count(*)
+FROM members
+WHERE count(*)>=2
+GROUP BY firstname
+ORDER BY firstname
+;
+______________________________________________________________________________________
+5) Desea obtener el nombre, apellido, dirección y código zip de todos los miembros que
+tengan el mismo zipcode ordenandolos por este mismo campo en forma
+ascendente. ¿Cómo puedes hacer eso?
+
+SELECT firstname, surname, address, zipcode
+FROM members
+ORDER BY zipcode ASC
+;
